@@ -86,7 +86,6 @@ const findUser = async (req, res) => {
   }
 };
 
-
 const getUsers = async (req, res) => {
   try {
     const users = await userModel.find();

@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Container, Nav, Navbar, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
+  const { user, logoutUser } = useContext(AuthContext)
   return (
     <Navbar bg="dark" className="mb-4" style={{ height: "3.75rem" }}>
       <Container>
@@ -11,16 +14,28 @@ const NavBar = () => {
           </Link>
         </h2>
 
-        <span className="text-warning">Logged in as Shivansh</span>
+        {user && <span className="text-warning">Logged in as {user?.name}</span>}
+
         <Nav>
           {/*Stack allows us to align the stuff either horizontally or vertically but by default vertically*/}
           <Stack direction="horizontal" gap={3}>
-            <Link to="/login" className="link-light text-descoration-none">
-              Login
-            </Link>
-            <Link to="/register" className="link-light text-descoration-none">
-              Register
-            </Link>
+            {
+              user && (<>
+                <Link onClick={() => logoutUser()} to="/login" className="link-light text-descoration-none">
+                  Logout
+                </Link>
+              </>)
+            }
+
+
+            {!user && (<>
+              <Link to="/login" className="link-light text-descoration-none">
+                Login
+              </Link>
+              <Link to="/register" className="link-light text-descoration-none">
+                Register
+              </Link>
+            </>)}
           </Stack>
         </Nav>
       </Container>

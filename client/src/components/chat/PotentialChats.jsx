@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 export const PotentialChats = () => {
   const { user } = useContext(AuthContext)
   const { potentialChats, createChat } = useContext(ChatContext);
+
   return (
     <div className="all-users">
       {potentialChats && potentialChats.map((u, index) => {

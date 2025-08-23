@@ -1,11 +1,21 @@
 import { useFetchRecipientUser } from "../../hooks/useFetchRecipient";
 import { Stack } from "react-bootstrap";
 import avatar from "../../assets/avatar.svg"
+import { useContext } from "react";
+import { ChatContext } from "../../context/ChatContext";
 
 export const UserChat = ({ chat, user }) => {
   const { recipientUser } = useFetchRecipientUser(chat, user)
+  const { updateCurrentChat } = useContext(ChatContext)
 
-  return <Stack direction="horizontal" gap={3} className="user-card align-items-center p-2 justify-content-between" role="button">
+  return <Stack
+    direction="horizontal"
+    gap={3}
+    className="user-card align-items-center p-2 justify-content-between"
+    role="button"
+    onClick={() => updateCurrentChat(chat)}
+  >
+
     <div className="d-flex">
       <div className="me-2">
         <img src={avatar} height="35px" />

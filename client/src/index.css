@@ -88,7 +88,9 @@ body,
   background: #282828;
   padding: 0.75rem;
   border-radius: 5px;
-  max-width: 50%;
+  max-width: 60%;
+  width: fit-content;
+  display: inline-block;
 }
 
 .message.self {

@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import { ChatContext } from "../../context/ChatContext";
 import { AuthContext } from "../../context/AuthContext";
-import { unreadNotificationFunc } from "../../utils/unreadnotification";
+import { unreadNotificationFunc } from "../../utils/unreadNotification";
 import moment from "moment";
 
 export const Notifications = () => {

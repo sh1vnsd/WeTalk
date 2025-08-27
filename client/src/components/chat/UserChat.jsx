@@ -3,7 +3,7 @@ import { Stack } from "react-bootstrap";
 import avatar from "../../assets/avatar.svg"
 import { useContext } from "react";
 import { ChatContext } from "../../context/ChatContext";
-import { unreadNotificationFunc } from "../../utils/unreadnotification";
+import { unreadNotificationFunc } from "../../utils/unreadNotification";
 import { useFetchLatestMessage } from "../../hooks/useFetchMessage";
 import moment from "moment";
 

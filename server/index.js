@@ -13,7 +13,17 @@ require("dotenv").config();
 
 //Middlewares
 app.use(express.json()); //this will allow us to receive and send json data
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://we-talk-p4il.vercel.app",
+      "https://we-talk-7hev.vercel.app",
+      /\.vercel\.app$/, // allow all vercel previews
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use("/api/users", userRoute);
 app.use("/api/chats", chatRoute)
 app.use("/api/messages", messageRoute);
@@ -37,9 +47,15 @@ mongoose
 
 const io = new Server(expressServer, {
   cors: {
-    origin: process.env.CLIENT_URL,
-  }
-})
+    origin: [
+      "https://we-talk-p4il.vercel.app",
+      "https://we-talk-7hev.vercel.app",
+      /\.vercel\.app$/, // allow all vercel previews
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 let onlineUsers = [];
 
